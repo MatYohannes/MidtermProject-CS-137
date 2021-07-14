@@ -37,12 +37,13 @@ int main()
 	char choice;
 	do {
 
-		cout << "COURSE ENTRY MENU FOR:	  " << currentSemester.getName() << " (" << currentSemester.getStartOf() << ' - ' << currentSemester.getEndOf() << endl;
+		cout << "COURSE ENTRY MENU FOR:	  " << currentSemester.getName() << " (" << currentSemester.getStartOf() << " - " << currentSemester.getEndOf() << ")" << endl;
 		cout << "----------------------------------------------------------" << endl;
 		cout << "1) Enter a new course\n";
 		cout << "2) Remove a course\n";
 		cout << "3) Print a Semester Schedule\n";
-		cout << "q) Quit the program" << endl;
+		cout << "q) Quit the program" << endl
+			<< "Enter your choice: ";
 
 		cin >> choice;
 
@@ -70,13 +71,15 @@ int main()
 			cout << "Please enter the starting time for the course in this format:   7:30 PM\n";
 			cin >> classStartTime;
 			Time classEndTime;
-			cout << "Please enter the ending time for the course i this format:   7:30 PM\n";
+			cout << "Please enter the ending time for the course in this format:   7:30 PM\n";
 			cin >> classEndTime;
 
 			// Asking for start and end date
 			Date classStartDate;
 			cout << "Please enter the start date for the course in this format: 7/4/2021 \n";
+			do {
 			cin >> classStartDate;
+			} while ()
 			Date classEndDate;
 			cout << "Please enter the end date for the course in this format: 7/4/2021 \n";
 			cin >> classEndDate;

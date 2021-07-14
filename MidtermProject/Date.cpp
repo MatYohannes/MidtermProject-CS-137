@@ -89,7 +89,7 @@ int Date::getYear() const
 ostream& operator << (ostream& output, const Date& right)
 {
 	output << setfill('0') << setw(2) << right.getMonth() << "/" << setfill('0') << setw(2) 
-		<< right.getDay() << "/" << setfill('0') << setw(4) << right.getYear() << endl;
+		<< right.getDay() << "/" << setfill('0') << setw(4) << right.getYear();
 
 	return output;
 }
