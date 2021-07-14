@@ -45,7 +45,7 @@ using namespace std;
 --------------------------------------------------------------------
 */
 
-
+//GitHub collaboration testing
 
 class CourseSchedule
 {
