@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <string>
 using namespace std;
-using std::string;
+
 #include "Time2.h"
 #include "Course.h"
 #include "Date.h"
@@ -111,10 +111,6 @@ Time& Course::setEndTime(Time eTime)
 
 double Course::calcDailyDuration() const
 {
-	/*double start = getStartTime().convertToDecimal();
-	double end = getEndTime().convertToDecimal();
-	double duration = end - start;
-	return duration;*/
 
 	Time start = getStartTime();
 	Time end = getEndTime();
@@ -132,21 +128,11 @@ ostream& operator << (ostream& output, const Course& right)
 	output << "# of Units:      " <<  setprecision(1) << fixed << right.getUnits() << endl;
 	output << setprecision(0)  << resetiosflags(ios::fixed) << "Course Dates:    " << right.getStartDate() << " - " << right.getEndDate() << endl;
 	output << "Meeting Days:    " << right.getMeetingDays() << endl;
-	output << "Meeting Time:    " << right.getStartTime() << " - " << right.getEndTime() << endl;
-	output << "Daily Duration:  "  << setprecision(2) << fixed << right.calcDailyDuration() << endl;
+	output << "Meeting Time:    " << right.getStartTime().convertToStandard() << " - " << right.getEndTime().convertToStandard() << endl;
+	output << "Daily Duration:  "  << setprecision(2) << fixed << right.calcDailyDuration() << " hours\n" << endl;
 	
 	return output;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

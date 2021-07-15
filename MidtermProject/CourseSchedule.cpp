@@ -8,18 +8,18 @@ using namespace std;
 #include "CourseSchedule.h"
 
 
-
 bool CourseSchedule::checkDates(const Semester semes,const Date& startDate,const Date& endDate) const
 {
 	Date semStart = semes.getStartOf();
 	Date semEnd = semes.getEndOf();
 
-	if (startDate < semStart)
+	if (startDate.convertToDays() < semStart.convertToDays())
 	{
-		if (endDate > semEnd)
+		if (semEnd.convertToDays() > endDate.convertToDays())
 		{
 			return false;
 		}
+		return false;
 	}
 	return true;
 }
@@ -76,32 +76,45 @@ string CourseSchedule::setStudentName(string name)
 
 Course* CourseSchedule::addCourse(const Course& right)
 {
-	//if (checkDates(studentSemester, right.getStartDate(), right.getEndDate()) == 1)
-
-	for (int i = 0; i < maxSize; i++)
+	if (checkDates(studentSemester, right.getStartDate(), right.getEndDate()))
 	{
-		if (studentCourse[i].getCourseName().compare("Null") == 0)
-		{
-			studentCourse[i] = right;
-			numCourses += 1;
-		
-		}
-		break;
+		studentCourse[numCourses] = right;
+		numCourses += 1;
+		return studentCourse;
 	}
-	return studentCourse;
+	else
+	{
+		cout << "\nThe course dates do not match up with the semester. Can not add this course" << endl;
+		return studentCourse;
+	}
 }
 
-Course* CourseSchedule::removeCourse(const Course& right)
+Course* CourseSchedule::removeCourse(string cName)
 {
-	for (int i = 0; i < maxSize; i++)
+	for (int i = 0; i < getMaxSize(); i++)
 	{
-		if (studentCourse[i].getCourseNumber().compare(right.getCourseNumber()) == 0)
+		if ((getStudentCourse()[i].getCourseNumber()).compare(cName) == 0)
 		{
-			studentCourse[i] = Course("Null", "Null", "Null", 0.0, Date(), Date(), Time(), Time());
-			numCourses -= 1;
+			if (i != getMaxSize() - 1)
+			{
+				studentCourse[i] = studentCourse[i + 1];
+
+				for (int j = i + 1; j < getMaxSize(); j++)
+				{
+					studentCourse[j - 1] = studentCourse[j];
+				}
+				numCourses -= 1;
+				studentCourse[getMaxSize() - 1] = Course("Null", "Null", "Null", 0.0, Date(), Date(), Time(), Time());
+				return studentCourse;
+			}
+			else
+			{
+				studentCourse[i] = Course("Null", "Null", "Null", 0.0, Date(), Date(), Time(), Time());
+				return studentCourse;
+			}
 		}
 	}
-	
+	cout << "\nNo class matches that name in the course schedule. Please try a different class name" << endl;
 	return studentCourse;
 }
 
@@ -116,7 +129,7 @@ ostream& operator << (ostream& output, const CourseSchedule& right)
 	
 	for (int i = 0; i < right.maxSize; i++)
 	{
-		cout << *right.getStudentCourse();
+		cout << right.getStudentCourse()[i];
 	}
 	return output;
 }

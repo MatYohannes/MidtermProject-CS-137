@@ -60,9 +60,7 @@ private:
 	bool checkDates(const Semester semes, const Date& startDate, const Date& endDate) const;
 
 public:
-	CourseSchedule(string name = "Jane Doe", Semester semes = Semester(), int mSize = 3);
-
-
+	CourseSchedule(string name = "Jane Doe", Semester semes = Semester(), int mSize = 4);
 
 	~CourseSchedule();
 
@@ -75,7 +73,7 @@ public:
 	string setStudentName(string name);
 
 	Course* addCourse(const Course& right);
-	Course* removeCourse(const Course& right);
+	Course* removeCourse(string cName);
 
 	
 };

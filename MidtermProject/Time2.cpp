@@ -1,8 +1,8 @@
 
 #include <iostream>
 #include <iomanip>
+#include <string>
 using namespace std;
-using std::string;
 
 #include "Time2.h"
 
@@ -56,7 +56,7 @@ double Time::convertToDecimal() const
 
 ostream& operator << (ostream& output, const Time& right)
 {
-	output << setfill('0') << setw(2) << right.getHour() << ":" << setfill('0') << setw(2) << right.getMinute() << endl;
+	output << setfill('0') << setw(2) << right.getHour() << ":" << setfill('0') << setw(2) << right.getMinute();
 
 	return output;
 }
@@ -98,4 +98,34 @@ double Time::operator - (const Time& right)
 		finalState -= difference;
 		return finalState;
 	}
+}
+
+string Time::convertToStandard() const
+{
+	int tempHour = getHour();
+	int tempMin = getMinute();
+
+	string stringMin = to_string(tempMin);
+
+	if (tempMin < 10)
+	{
+		stringMin = "0" + stringMin;
+	}
+
+	if (tempHour > 12)
+	{
+		string tempTime = to_string(tempHour - 12) + ":" + stringMin + " PM";
+		return tempTime;
+	}
+	else if (tempHour == 12)
+	{
+		string tempTime = to_string(tempHour) + ":" + stringMin + " PM";
+		return tempTime;
+	}
+	else
+	{
+		string tempTime = to_string(tempHour) + ":" + stringMin + " AM";
+		return tempTime;
+	}
+
 }
