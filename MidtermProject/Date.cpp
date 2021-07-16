@@ -102,8 +102,6 @@ istream& operator >> (istream& input, Date& right)
 	input.ignore();
 	input >> setw(4) >> setfill('0') >> right.year;
 
-	//Checkday function can be added to cerr if wrong month day mix
-
 	return input;
 }
 

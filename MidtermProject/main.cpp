@@ -28,8 +28,13 @@ int main()
 	cout << "Please enter the end date of semester is this format: 7/4/2021 \n";
 	cin >> personEndDate;
 	int numOfClasses;
-	cout << "How many classes do you plan to take?" << endl;
-	cin >> numOfClasses;
+
+	while (cout << "How many classes do you plan to take?" && !(cin >> numOfClasses))
+	{
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize>::max(), '\n');
+		cout << "\nInvalid input. Please re-enter a number.\n" << endl;
+	}
 
 	// Creating Semester and Course Schedule objects
 	Semester currentSemester(personSemester, personStartDate, personEndDate);
@@ -70,8 +75,12 @@ int main()
 				cout << "Please provide the meeting days for the course: ";
 				getline(cin, classDays);
 
-				cout << "Please provide the number of units the course is worth: ";
-				cin >> unitsValue;
+				while (cout << "Please provide the number of units the course is worth: " && !(cin >> unitsValue))
+				{
+					cin.clear();
+					cin.ignore(numeric_limits < streamsize>::max(), '\n');
+					cout << "\nInvalid input. Please re-enter a number.\n" << endl;
+				}
 
 				// Asking for start and end time
 				Time classStartTime;
@@ -105,7 +114,6 @@ int main()
 		
 		if (choice == '2')
 		{
-
 			if (personCourseSchedule.getNumCourses() != 0)
 			{
 				string removeClass;
