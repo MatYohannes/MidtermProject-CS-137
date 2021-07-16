@@ -53,7 +53,7 @@ Date Semester::getEndOf() const
 ostream& operator << (ostream& output, const Semester& right)
 {
 	output << "Semester: " << right.getName() << " ("
-		<< right.getStartOf() << " - " << right.getEndOf() << ")" << endl;
+		<< right.getStartOf() << " - " << right.getEndOf() << ")";
 
 	return output;
 }

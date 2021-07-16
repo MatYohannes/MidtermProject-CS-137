@@ -22,6 +22,8 @@ public:
 	int getMinute() const;
 	double convertToDecimal() const;
 	double operator - (const Time& right);
+
+	string convertToStandard() const;
 };
 
 #endif // !TIME_H
