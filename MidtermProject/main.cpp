@@ -27,6 +27,7 @@ int main()
 	Date personEndDate;
 	cout << "Please enter the end date of semester is this format: 7/4/2021 \n";
 	cin >> personEndDate;
+
 	int numOfClasses;
 
 	while (cout << "How many classes do you plan to take?" && !(cin >> numOfClasses))
@@ -138,7 +139,7 @@ int main()
 			cout << personCourseSchedule;
 		}
 
-		if (choice != '1' || choice != '2' || choice != '3' || choice != 'q' || choice != 'Q')
+		if (choice != '1' && choice != '2' && choice != '3' && choice != 'q' && choice != 'Q')
 		{
 			cout << "Invalid selection!\n" << endl;
 		}
