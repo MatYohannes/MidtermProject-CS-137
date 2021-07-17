@@ -103,7 +103,7 @@ int main()
 
 				// Adding course1 to user course schedule
 				personCourseSchedule.addCourse(courseToAdd);
-
+				
 			}
 			else
 			{
