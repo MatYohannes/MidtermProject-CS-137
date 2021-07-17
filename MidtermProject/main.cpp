@@ -11,7 +11,7 @@ using std::string;
 
 int main()
 {
-	cout << "Welcome to the Imaginary College" << endl;
+	cout << "Welcome to the Imaginary College of the future!!" << endl;
 
 	// Asking for name, semester name, semester start day, semester end day, number of classes taking
 	string personName;
