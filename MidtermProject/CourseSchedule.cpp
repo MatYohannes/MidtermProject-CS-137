@@ -15,12 +15,13 @@ bool CourseSchedule::checkDates(const Semester semes,const Date& startDate,const
 
 	if (startDate.convertToDays() < semStart.convertToDays())
 	{
-		if (semEnd.convertToDays() > endDate.convertToDays())
-		{
-			return false;
-		}
 		return false;
 	}
+	if ( endDate.convertToDays()  > semEnd.convertToDays())
+	{
+		return false;
+	}
+
 	return true;
 }
 

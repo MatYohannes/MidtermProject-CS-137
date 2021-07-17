@@ -75,7 +75,12 @@ istream& operator >> (istream& input, Time& right)
 
 	if (!meridiem.compare("PM")) // Come back to this
 	{
-		right.setHour(right.getHour() + 12);
+		if (right.getHour() != 12)
+		{
+			right.setHour(right.getHour() + 12);
+		}
+		
+		
 	}
 	return input;
 }

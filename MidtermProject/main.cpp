@@ -9,7 +9,6 @@ using std::string;
 
 
 
-
 int main()
 {
 	cout << "Welcome to the Imaginary College" << endl;
@@ -30,7 +29,7 @@ int main()
 
 	int numOfClasses;
 
-	while (cout << "How many classes do you plan to take?" && !(cin >> numOfClasses))
+	while (cout << "How many classes do you plan to take? " && !(cin >> numOfClasses))
 	{
 		cin.clear();
 		cin.ignore(numeric_limits < streamsize>::max(), '\n');
@@ -52,6 +51,7 @@ int main()
 		cout << "3) Print a Semester Schedule\n";
 		cout << "q) Quit the program" << endl;
 
+		cout << "\nPlease enter your choice?" << endl;
 		cin >> choice;
 
 		if (choice == '1')
@@ -67,10 +67,10 @@ int main()
 				cout << "\nEntering a new course selected\n";
 				cout << "----------------------------------" << endl;
 				cin.ignore();
-				cout << "Please provide a course number: ";
+				cout << "Please provide a course number in this format - CSIS 137: ";
 				getline(cin, classNumber);
 
-				cout << "Please provide a course name: ";
+				cout << "Please provide a course name in this format - C++: ";
 				getline(cin, className);
 
 				cout << "Please provide the meeting days for the course: ";
@@ -118,7 +118,7 @@ int main()
 			if (personCourseSchedule.getNumCourses() != 0)
 			{
 				string removeClass;
-				cout << "Please type in the course number you would like to remove from the course schedule: ";
+				cout << "Please type in the course number you would like to remove from the course schedule in format - CSIS 137: ";
 				cin.ignore();
 				getline(cin, removeClass);
 
@@ -154,3 +154,15 @@ int main()
 
 
 
+
+//int main()
+//{
+//	Semester mySemet("Fall 2019", Date(6, 1, 2021), Date(8, 1, 2021));
+//	CourseSchedule myCS("Mat", mySemet, 4);
+//
+//	Course cpp("C++", "CSIS 137", "Th", 4.0, Date(5, 1, 2021), Date(8, 1, 2021), Time(), Time());
+//	myCS.addCourse(cpp);
+//
+//	cout << myCS;
+//	
+//}

@@ -119,7 +119,10 @@ double Course::calcDailyDuration() const
 	{
 		return 0.0;
 	}
-	return (start -end);
+
+	return (start - end);
+
+	
 }
 
 ostream& operator << (ostream& output, const Course& right)
