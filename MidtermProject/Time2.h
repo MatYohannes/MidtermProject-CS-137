@@ -2,6 +2,40 @@
 #ifndef TIME_H
 #define TIME_H
 
+/*
+--------------------------------------------------------------------
+						Time
+--------------------------------------------------------------------
+		- hour : int
+		- minute : int
+--------------------------------------------------------------------
+		
+		+ Time( : int, : int)
+		+ ~Time()
+
+		+ setTime( : int, : int) Time&
+		+ setHour( : int) : Time&
+		+ setMinute( : int) : Time&
+		+ getHour() : int const
+		+ getMinute() : int const
+		+ convertToDecimal() : double const
+		+ operator - ( : Time& const) : double
+		+ convertToStandard() : string const
+		
+--------------------------------------------------------------------
+*/
+
+/*
+--------------------------------------------------------------------
+					<<C++Global>>
+--------------------------------------------------------------------
+		-  operator << ( : ostream&, : const Course&) : ostream&
+		-  operator >> ( : istream&, : Time&) : istream&
+--------------------------------------------------------------------
+
+--------------------------------------------------------------------
+*/
+
 class Time
 {
 	friend ostream& operator << (ostream& output, const Time& right);

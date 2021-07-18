@@ -21,7 +21,6 @@ using namespace std;
 		- checkDates( : Semester, : const Date&, : const Date&)
 --------------------------------------------------------------------
 		+ CourseSchedule( : string, : string, : int)
-		+ CourseSchedule( : const CourseSchedule&)
 		+ ~CourseSchedule()
 
 		+ getStudentName() const
@@ -45,8 +44,6 @@ using namespace std;
 --------------------------------------------------------------------
 */
 
-
-
 class CourseSchedule
 {
 	friend ostream& operator << (ostream& output, const CourseSchedule& right);
@@ -61,7 +58,6 @@ private:
 
 public:
 	CourseSchedule(string name = "Jane Doe", Semester semes = Semester(), int mSize = 4);
-
 	~CourseSchedule();
 
 	string getStudentName() const;
@@ -71,11 +67,8 @@ public:
 	int getNumCourses() const;
 
 	string setStudentName(string name);
-
 	Course* addCourse(const Course& right);
 	Course* removeCourse(string cName);
-
-	
 };
 
 

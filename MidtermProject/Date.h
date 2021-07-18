@@ -20,6 +20,8 @@
 		- checkDay( : int) : const int
 --------------------------------------------------------------------
 		+ Date( : int, : int, : int)
+		+ Date( : Date& const)
+		+ ~Date()
 		
 		+ setDate( : int, : int, : int) : Date&
 		+ setMonth( : int) : Date&
@@ -77,7 +79,6 @@ public:
 	int getYear() const;
 
 	int convertToDays() const; // calculate off by 0.04% and lower after year 1000
-	bool checkDateFormat() const;
 
 
 	bool operator > (const Date& right) const;

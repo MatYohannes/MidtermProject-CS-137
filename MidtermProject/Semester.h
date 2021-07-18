@@ -11,6 +11,8 @@
 		- endOf : Date
 --------------------------------------------------------------------
 		+ Semester( : string, : Date, : Date)
+
+		+ setSemester( : string, : Date, : Date) : Semester&
 		+ setName( : string) : Semester&
 		+ setStartOf( : Date) : Semester&
 		+ setEndOf( : Date) : Semester&

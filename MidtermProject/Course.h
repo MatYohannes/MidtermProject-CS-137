@@ -21,6 +21,7 @@ using std::string;
 --------------------------------------------------------------------
 		+ Course( : string, : string, : string, : double,
 		        : Date, : Date, : Time, : Time)
+		+ ~Course()
 
 		+ getCourseName() : const string
 		+ getCourseNumber() : const string
@@ -71,7 +72,6 @@ public:
 		double units = 0.0, Date startDate = Date(),
 		Date endDate = Date(), Time startTime = Time(), Time endTime = Time());
 	
-
 	~Course();
 	string getCourseName() const;
 	string getCourseNumber() const;
