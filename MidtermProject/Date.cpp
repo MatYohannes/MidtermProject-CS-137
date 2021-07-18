@@ -96,9 +96,11 @@ ostream& operator << (ostream& output, const Date& right)
 
 istream& operator >> (istream& input, Date& right)
 {
+
 	input >> setw(2) >> setfill('0') >> right.month;
 	input.ignore();
 	input >> setw(2) >> setfill('0') >> right.day;
+	right.checkDay(right.getDay());
 	input.ignore();
 	input >> setw(4) >> setfill('0') >> right.year;
 

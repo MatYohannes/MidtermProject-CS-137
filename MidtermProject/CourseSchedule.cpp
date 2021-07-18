@@ -85,7 +85,7 @@ Course* CourseSchedule::addCourse(const Course& right)
 	}
 	else
 	{
-		cout << "\nThe course dates do not match up with the semester. Can not add this course" << endl;
+		cout << "\nThe course dates do not match up with the semester. Can not add this course." << endl;
 		return studentCourse;
 	}
 }
@@ -115,7 +115,7 @@ Course* CourseSchedule::removeCourse(string cName)
 			}
 		}
 	}
-	cout << "\nNo class matches that name in the course schedule. Please try a different class name" << endl;
+	cout << "\nNo class matches that name in the course schedule. Please try a different class name." << endl;
 	return studentCourse;
 }
 

@@ -20,13 +20,26 @@ int main()
 	string personSemester;
 	cout << "Please enter the semester you are joining in this format: Fall 2019 \n";
 	getline(cin, personSemester);
-	Date personStartDate;
-	cout << "Please enter the start date of semester is this format: 7/4/2021 \n";
-	cin >> personStartDate;
-	Date personEndDate;
-	cout << "Please enter the end date of semester is this format: 7/4/2021 \n";
-	cin >> personEndDate;
 
+	bool dayStatus = false;
+	Date personStartDate;
+	Date personEndDate;
+	do
+	{
+		cout << "Please enter the start date of semester is this format: 7/4/2021 \n";
+		cin >> personStartDate;
+		cout << "Please enter the end date of semester is this format: 7/4/2021 \n";
+		cin >> personEndDate;
+		dayStatus = false;
+
+		if (personStartDate.convertToDays() > personEndDate.convertToDays())
+		{
+			cout << "\nThe semester can not end before it starts. Please input correct dates.\n" << endl;
+			dayStatus = true;
+		}
+
+	} while (dayStatus);
+	
 	int numOfClasses;
 
 	while (cout << "How many classes do you plan to take? " && !(cin >> numOfClasses))
@@ -43,8 +56,7 @@ int main()
 	// Menu
 	char choice;
 	do {
-
-		cout << "COURSE ENTRY MENU FOR:	  " << currentSemester.getName() << " (" << currentSemester.getStartOf() << " - " << currentSemester.getEndOf() << ")" << endl;
+		cout << "\nCOURSE ENTRY MENU FOR:	  " << currentSemester.getName() << " (" << currentSemester.getStartOf() << " - " << currentSemester.getEndOf() << ")" << endl;
 		cout << "----------------------------------------------------------" << endl;
 		cout << "1) Enter a new course\n";
 		cout << "2) Remove a course\n";
@@ -69,10 +81,8 @@ int main()
 				cin.ignore();
 				cout << "Please provide a course number in this format - CSIS 137: ";
 				getline(cin, classNumber);
-
 				cout << "Please provide a course name in this format - C++: ";
 				getline(cin, className);
-
 				cout << "Please provide the meeting days for the course: ";
 				getline(cin, classDays);
 
@@ -85,32 +95,55 @@ int main()
 
 				// Asking for start and end time
 				Time classStartTime;
-				cout << "Please enter the starting time for the course in this format:   7:30 PM\n";
-				cin >> classStartTime;
 				Time classEndTime;
-				cout << "Please enter the ending time for the course in this format:   7:30 PM\n";
-				cin >> classEndTime;
+				bool classTimeStatus = false;
 
+				do
+				{
+					cout << "Please enter the starting time for the course in this format:   7:30 PM\n";
+					cin >> classStartTime;
+					cout << "Please enter the ending time for the course in this format:   7:30 PM\n";
+					cin >> classEndTime;
+					classTimeStatus = false;
+
+					if (classStartTime.convertToDecimal() > classEndTime.convertToDecimal())
+					{
+						cout << "\nThe class can not end before it starts. Please input correct times.\n" << endl;
+						classTimeStatus = true;
+					}
+
+				} while (classTimeStatus);
+				
 				// Asking for start and end date
 				Date classStartDate;
-				cout << "Please enter the start date for the course in this format: 7/4/2021 \n";
-				cin >> classStartDate;
 				Date classEndDate;
-				cout << "Please enter the end date for the course in this format: 7/4/2021 \n";
-				cin >> classEndDate;
+				bool classDayStatus = false;
+
+				do
+				{
+					cout << "Please enter the start date for the course in this format: 7/4/2021 \n";
+					cin >> classStartDate;
+					cout << "Please enter the end date for the course in this format: 7/4/2021 \n";
+					cin >> classEndDate;
+					classDayStatus = false;
+
+					if (classStartDate.convertToDays() > classEndDate.convertToDays())
+					{
+						cout << "\nThe course can not end before it starts. Please input correct dates.\n" << endl;
+						classDayStatus = true;
+					}
+
+				} while (classDayStatus);
 
 				Course courseToAdd(className, classNumber, classDays, unitsValue, classStartDate, classEndDate, classStartTime, classEndTime);
 
 				// Adding course1 to user course schedule
-				personCourseSchedule.addCourse(courseToAdd);
-				
+				personCourseSchedule.addCourse(courseToAdd);	
 			}
 			else
 			{
 				cout << "Your plate is full. You can not add another class to the course schedule\n" << endl;
 			}
-
-			
 		}
 		
 		if (choice == '2')
@@ -121,9 +154,7 @@ int main()
 				cout << "Please type in the course number you would like to remove from the course schedule in format - CSIS 137: ";
 				cin.ignore();
 				getline(cin, removeClass);
-
 				personCourseSchedule.removeCourse(removeClass);
-
 				cout << endl;
 				Course courseToRemove;
 			}
@@ -131,7 +162,6 @@ int main()
 			{
 				cout << "You have no class to remove.\n" << endl;
 			}
-
 		}
 
 		if (choice == '3')
@@ -155,14 +185,16 @@ int main()
 
 
 
+
 //int main()
 //{
-//	Semester mySemet("Fall 2019", Date(6, 1, 2021), Date(8, 1, 2021));
-//	CourseSchedule myCS("Mat", mySemet, 4);
+//	Date myDate;
 //
-//	Course cpp("C++", "CSIS 137", "Th", 4.0, Date(5, 1, 2021), Date(8, 1, 2021), Time(), Time());
-//	myCS.addCourse(cpp);
+//	cout << "Enter a correct date" << endl;
 //
-//	cout << myCS;
-//	
+//	cin >> myDate;
+//
+//	cout << myDate;
+//
+//	return 0;
 //}

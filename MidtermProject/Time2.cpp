@@ -67,11 +67,37 @@ istream& operator >> (istream& input, Time& right)
 
 	string meridiem = "AM";
 
-	input >> setw(2) >> setfill('0') >> right.hour;
-	input.ignore();
-	input >> setw(2) >> setfill('0') >> right.minute;
-	input.ignore();
-	input >> setw(2) >> meridiem;
+	bool status = false;
+
+	do
+	{
+		input >> setw(2) >> setfill('0') >> right.hour;
+		input.ignore();
+		input >> setw(2) >> setfill('0') >> right.minute;
+		input.ignore();
+		input >> setw(2) >> meridiem;
+
+		status = false;
+
+		if (meridiem != "PM" && meridiem != "AM")
+		{
+			cout << "Please enter either AM or PM." << endl;
+			status = true;
+		}
+		
+		if (right.getHour() < 0 || right.getHour() > 12)
+		{
+			cout << "Please enter hours greater than 0 & less than 12." << endl;
+			status = true;
+		}
+
+		if (right.getMinute() < 0 || right.getMinute() > 60)
+		{
+			cout << "Please enter minutes greater than 0 & less than 60." << endl;
+			status = true;
+		}
+		
+	} while (status == true);
 
 	if (!meridiem.compare("PM")) // Come back to this
 	{
@@ -79,8 +105,6 @@ istream& operator >> (istream& input, Time& right)
 		{
 			right.setHour(right.getHour() + 12);
 		}
-		
-		
 	}
 	return input;
 }
