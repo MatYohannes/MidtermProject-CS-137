@@ -129,6 +129,15 @@ double Time::operator - (const Time& right)
 	}
 }
 
+bool Time::operator > (const Time& right) const
+{
+	int startDate = this->convertToDecimal();
+	int endDate = right.convertToDecimal();
+
+	return startDate > endDate;
+
+}
+
 string Time::convertToStandard() const
 {
 	int tempHour = getHour();

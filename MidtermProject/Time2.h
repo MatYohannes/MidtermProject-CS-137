@@ -20,6 +20,7 @@
 		+ getMinute() : int const
 		+ convertToDecimal() : double const
 		+ operator - ( : Time& const) : double
+		+ operator > ( : Time& const) : bool
 		+ convertToStandard() : string const
 		
 --------------------------------------------------------------------
@@ -56,6 +57,7 @@ public:
 	int getMinute() const;
 	double convertToDecimal() const;
 	double operator - (const Time& right);
+	bool operator > (const Time& right) const;
 
 	string convertToStandard() const;
 };

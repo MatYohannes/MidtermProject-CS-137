@@ -7,8 +7,6 @@ using namespace std;
 #include "CourseSchedule.h"
 using std::string;
 
-
-
 int main()
 {
 	cout << "Welcome to the Imaginary College of the future!!" << endl;
@@ -32,7 +30,7 @@ int main()
 		cin >> personEndDate;
 		dayStatus = false;
 
-		if (personStartDate.convertToDays() > personEndDate.convertToDays())
+		if (personStartDate > personEndDate)
 		{
 			cout << "\nThe semester can not end before it starts. Please input correct dates.\n" << endl;
 			dayStatus = true;
@@ -106,7 +104,7 @@ int main()
 					cin >> classEndTime;
 					classTimeStatus = false;
 
-					if (classStartTime.convertToDecimal() > classEndTime.convertToDecimal())
+					if (classStartTime > classEndTime)
 					{
 						cout << "\nThe class can not end before it starts. Please input correct times.\n" << endl;
 						classTimeStatus = true;
@@ -127,7 +125,7 @@ int main()
 					cin >> classEndDate;
 					classDayStatus = false;
 
-					if (classStartDate.convertToDays() > classEndDate.convertToDays())
+					if (classStartDate > classEndDate)
 					{
 						cout << "\nThe course can not end before it starts. Please input correct dates.\n" << endl;
 						classDayStatus = true;
@@ -181,20 +179,3 @@ int main()
 	return 0;
 }
 
-
-
-
-
-
-//int main()
-//{
-//	Date myDate;
-//
-//	cout << "Enter a correct date" << endl;
-//
-//	cin >> myDate;
-//
-//	cout << myDate;
-//
-//	return 0;
-//}

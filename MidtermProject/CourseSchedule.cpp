@@ -39,8 +39,7 @@ CourseSchedule::CourseSchedule(string name, Semester semes, int mSize)
 
 CourseSchedule::~CourseSchedule()
 {
-	//delete studentCourse, explain the breakpoint issue that occured with team
-	cout << "The CourseSchedule Destructor is complete" << endl;
+	//cout << "The CourseSchedule Destructor is complete" << endl;
 }
 
 string CourseSchedule::getStudentName() const
